@@ -37,6 +37,7 @@ public class EnemyBehavior : MonoBehaviour {
     {
         if (_timeStampPathCheck <= Time.time)
         {
+            _navmeshagent.Stop();
             PathCheck();
             _navmeshagent.Resume();
             _timeStampPathCheck = Time.time + pathCheckInterval;

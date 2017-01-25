@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleScript : BuildableObject {
-
-    public int health;
-    public int max_health;
+    
     public int attack;
 
     private Renderer _rend;
@@ -19,7 +17,7 @@ public class ObstacleScript : BuildableObject {
     }
 
 	void Update () {
-        if (max_health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }

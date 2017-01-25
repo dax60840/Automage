@@ -3,29 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PlayerController : MonoBehaviour {
-    
-    public int health;
-    public int hunger;
-    public int sleep;
+public class PlayerController : MonoBehaviour
+{
 
     public int maxHealth;
     public int maxHunger;
     public int maxSleep;
+
+    public int Health
+    {
+        get { return _health; }
+        set
+        {
+            if (value < maxHealth)
+                _health = value;
+            else
+                _health = maxHealth;
+        }
+    }
+
+    public int Hunger
+    {
+        get { return _hunger; }
+        set
+        {
+            if (value < maxHunger)
+                _hunger = value;
+            else
+                _hunger = maxHunger;
+        }
+    }
+
+    public int Sleep
+    {
+        get { return _sleep; }
+        set
+        {
+            if (value < maxSleep)
+                _sleep = value;
+            else
+                _sleep = maxSleep;
+        }
+    }
+
+    private int _health;
+    private int _hunger;
+    private int _sleep;
+
 
     public float speed;
     public Inventory inventory;
 
     private Rigidbody _rb;
     private GameObject _currentGo;
-    
-	void Start () {
+
+    void Start()
+    {
         _rb = GetComponent<Rigidbody>();
-	}
-	
-	void Update () {
-		
-	}
+    }
+
+    void Update()
+    {
+
+    }
 
     public void Move(Vector3 direction)
     {
@@ -39,7 +79,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Build(BuildableObject bo)
     {
-        if(inventory.Contain("wood") > bo.cost_wood && inventory.Contain("iron") > bo.cost_iron && inventory.Contain("stone") > bo.cost_stone)
+        if (inventory.Contain("wood") > bo.cost_wood && inventory.Contain("iron") > bo.cost_iron && inventory.Contain("stone") > bo.cost_stone)
         {
             inventory.Remove("wood", bo.cost_wood);
             inventory.Remove("iron", bo.cost_iron);
@@ -51,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Repare()
     {
-        var go = _currentGo.GetComponent<ObstacleScript>();
+        var go = _currentGo.GetComponent<BuildableObject>();
         if (go != null)
         {
             if (inventory.Contain("wood") > go.repair_wood && inventory.Contain("iron") > go.repair_iron && inventory.Contain("stone") > go.repair_stone)
@@ -60,27 +100,31 @@ public class PlayerController : MonoBehaviour {
                 inventory.Remove("iron", go.cost_iron);
                 inventory.Remove("stone", go.cost_stone);
 
-                go.max_health = go.health;
+                go.health = go.max_health;
             }
         }
     }
 
-    public void Eat()
+    public void Eat(int quantity)
     {
-        if(inventory.Contain("food") > 0)
+        if (inventory.Contain("food") > quantity)
         {
-            inventory.Remove("food", 1);
+            Hunger += quantity;
+            inventory.Remove("food", quantity);
         }
     }
 
     public void Harvest()
     {
-
+        if (_currentGo.tag == "Food")
+        {
+            inventory.Add("food", 1);
+        }
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable")
+        if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food")
         {
             _currentGo = col.gameObject;
         }
