@@ -7,7 +7,7 @@ using Jurassic.Library;
 
 public class CodeSerializer : MonoBehaviour
 {
-	ScriptEngine engine;
+	public ScriptEngine engine;
 
 	void Awake ()
 	{
@@ -15,6 +15,9 @@ public class CodeSerializer : MonoBehaviour
         PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 		engine = new ScriptEngine ();
 		engine.EnableExposedClrTypes = true;
+        //engine.EnableDebugging = true;
+        engine.ForceStrictMode = true;
+        
 		engine.SetGlobalValue ("Mathf", typeof(Mathf));
 		engine.SetGlobalValue ("Input", typeof(Input));
 		engine.SetGlobalValue ("Vector3", typeof(Vector3));
@@ -23,10 +26,11 @@ public class CodeSerializer : MonoBehaviour
 		engine.SetGlobalValue ("Color", typeof(Color));
 		engine.SetGlobalValue ("Physics", typeof(Physics));
 		engine.SetGlobalValue ("Player", playerController);
+        engine.SetGlobalValue("Me", (object)this);
 
-//		engine.SetGlobalFunction ("setTimeout", new Action<Jurassic.Library.FunctionInstance, int> (setTimeout));
-//		engine.SetGlobalFunction ("setInterval", new Action<Jurassic.Library.FunctionInstance, int> (setInterval));
-		engine.SetGlobalFunction ("log", new Action<string> (Debug.Log));
+        //		engine.SetGlobalFunction ("setTimeout", new Action<Jurassic.Library.FunctionInstance, int> (setTimeout));
+        //		engine.SetGlobalFunction ("setInterval", new Action<Jurassic.Library.FunctionInstance, int> (setInterval));
+        engine.SetGlobalFunction ("log", new Action<string> (Debug.Log));
 	}
 
 
