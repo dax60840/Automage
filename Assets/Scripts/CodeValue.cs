@@ -16,6 +16,10 @@ public class CodeValue : MonoBehaviour
 
             return Value;
         }
+        set
+        {
+            Value = value;
+        }
     }
 
     public bool getText;
