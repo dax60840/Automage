@@ -1,0 +1,3 @@
+Player.GotoByTag(%0%, function(){
+%end%
+});
