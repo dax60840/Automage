@@ -1,0 +1,11 @@
+var val = "%0%";
+
+if(val == "Haut") {
+	Player.Move(Vector3.forward);
+}else if(val == "Bas"){
+	Player.Move(Vector3.back);
+}else if(val == "Gauche"){
+	Player.Move(Vector3.left);
+}else if(val == "Droite"){
+	Player.Move(Vector3.right);
+}

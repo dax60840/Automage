@@ -1,1 +1,1 @@
-Inventaire.Consume(0);
+Player.Eat(1);

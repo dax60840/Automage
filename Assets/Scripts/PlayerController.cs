@@ -2,25 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public int maxHealth;
+    
     public int maxHunger;
-    public int maxSleep;
-
-    public int Health
-    {
-        get { return _health; }
-        set
-        {
-            if (value < maxHealth)
-                _health = value;
-            else
-                _health = maxHealth;
-        }
-    }
 
     public int Hunger
     {
@@ -33,48 +20,46 @@ public class PlayerController : MonoBehaviour
                 _hunger = maxHunger;
         }
     }
-
-    public int Sleep
-    {
-        get { return _sleep; }
-        set
-        {
-            if (value < maxSleep)
-                _sleep = value;
-            else
-                _sleep = maxSleep;
-        }
-    }
-
-    private int _health;
-    private int _hunger;
-    private int _sleep;
-
-
+    
     public float speed;
     public Inventory inventory;
 
+    private int _hunger;
+    private NavMeshAgent _navmeshagent;
+    private TargetScript _navmeshTarget;
     private Rigidbody _rb;
     private GameObject _currentGo;
 
     void Start()
     {
+        inventory = new Inventory();
+        _navmeshTarget = GetComponent<TargetScript>(); //pour specifier la destination
+        _navmeshagent = _navmeshTarget.GetComponent<NavMeshAgent>(); //pour stopper ou reprendre la navigation
+
         _rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            Move(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+        }
     }
 
     public void Move(Vector3 direction)
     {
-        _rb.DOMove(transform.position + direction, Vector3.Distance(direction, transform.position) / speed);
+        _navmeshagent.SetDestination(RoundVector(transform.position + direction));
+    }
+
+    Vector3 RoundVector(Vector3 vec)
+    {
+        return new Vector3(Mathf.RoundToInt(vec.x), Mathf.RoundToInt(vec.y), Mathf.RoundToInt(vec.z) );
     }
 
     public void GoTo(Vector3 position)
     {
-        _rb.DOMove(position, Vector3.Distance(position, transform.position) / speed);
+        _navmeshagent.SetDestination(position);
     }
 
     public void Build(BuildableObject bo)
@@ -107,18 +92,29 @@ public class PlayerController : MonoBehaviour
 
     public void Eat(int quantity)
     {
-        if (inventory.Contain("food") > quantity)
+        Debug.Log(inventory.Contain("food"));
+        if (inventory.Contain("food") >= quantity)
         {
             Hunger += quantity;
             inventory.Remove("food", quantity);
+            Debug.Log("miam");
         }
     }
 
     public void Harvest()
     {
-        if (_currentGo.tag == "Food")
+        if (_currentGo != null && _currentGo.tag == "Food")
         {
-            inventory.Add("food", 1);
+            if (_currentGo.GetComponent<Bush>().Eat())
+            {
+                Debug.Log("harvest");
+                inventory.Add("food", 1);
+            }
+            
+            else
+            {
+                Destroy(_currentGo.gameObject);
+            }
         }
     }
 

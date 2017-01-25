@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+using DG.Tweening;
+
+public class UIDragPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
+{
+
+	// Use this for initialization
+	void Start ()
+	{
+		
+	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+		
+	}
+
+	public void OnPointerEnter (PointerEventData eventData)
+	{
+		if (NoteManager.Singleton.isDragging) {
+			transform.DOKill (true);
+			transform.GetComponent<Image> ().DOKill (true);
+
+			transform.DOScale (Vector3.one * 2f, .3f).SetEase (Ease.OutBounce);
+			transform.GetComponent<Image> ().DOFade (.5f, .3f);
+		}
+	}
+
+	public void OnPointerExit (PointerEventData eventData)
+	{
+		transform.DOKill (true);
+		transform.GetComponent<Image> ().DOKill (true);
+
+		transform.DOScale (Vector3.one, .3f).SetEase (Ease.OutBounce);
+		transform.GetComponent<Image> ().DOFade (1f, .3f);
+	}
+
+	public void OnDrop (PointerEventData data)
+	{
+		if (data.pointerDrag != null) {
+			data.pointerDrag.GetComponent<CodeComponent> ().isAttached = true;
+			data.pointerDrag.transform.SetParent (transform.parent.parent);
+			data.pointerDrag.transform.SetAsLastSibling ();
+		}
+		transform.parent.SetAsLastSibling ();
+	}
+}
