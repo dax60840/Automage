@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -48,5 +49,8 @@ public class Resize : MonoBehaviour
 			parent.enabled = false;
 			parent.enabled = true;
 		});
+
+
+		
 	}
 }
