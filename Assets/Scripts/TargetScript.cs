@@ -15,7 +15,7 @@ public class TargetScript : MonoBehaviour
 
     void Update()
     {
-        if (m_agent.pathPending || m_agent.remainingDistance > 0.1f)
+        if (m_agent.pathPending || m_agent.remainingDistance > 2f)
             return;
 
         if(m_target != null)
