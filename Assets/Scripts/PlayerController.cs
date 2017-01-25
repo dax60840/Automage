@@ -102,14 +102,24 @@ public class PlayerController : MonoBehaviour
 
     public void Build(string prefabName)
     {
-        BuildableObject bo = Resources.Load<GameObject>(prefabName).GetComponent<BuildableObject>();
-        if (inventory.Contain("wood") >= bo.cost_wood && inventory.Contain("iron") >= bo.cost_iron && inventory.Contain("stone") >= bo.cost_stone)
+        if (_currentGo == null)
         {
-            inventory.Remove("wood", bo.cost_wood);
-            inventory.Remove("iron", bo.cost_iron);
-            inventory.Remove("stone", bo.cost_stone);
+            BuildableObject bo = Resources.Load<GameObject>(prefabName).GetComponent<BuildableObject>();
+            if (inventory.Contain("wood") >= bo.cost_wood && inventory.Contain("iron") >= bo.cost_iron && inventory.Contain("stone") >= bo.cost_stone)
+            {
+                inventory.Remove("wood", bo.cost_wood);
+                inventory.Remove("iron", bo.cost_iron);
+                inventory.Remove("stone", bo.cost_stone);
 
-            Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
+                Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("Pas assez de ressources");
+            }
+        }else
+        {
+            Debug.Log("Construction impossible - espace occupé");
         }
     }
 
@@ -126,7 +136,11 @@ public class PlayerController : MonoBehaviour
                 inventory.Remove("stone", go.cost_stone);
 
                 go.health = go.max_health;
+                Debug.Log("Réparé !");
             }
+        }else
+        {
+            Debug.Log("Rien à réparer");
         }
     }
 
@@ -163,6 +177,15 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food")
         {
             _currentGo = col.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+
+        if(_currentGo == col.gameObject)
+        {
+            _currentGo = null;
         }
     }
 
