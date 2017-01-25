@@ -12,5 +12,4 @@ public class BuildableObject : MonoBehaviour {
     public int repair_stone;
     public int repair_wood;
     public int repair_iron;
-    public GameObject prefab;
 }

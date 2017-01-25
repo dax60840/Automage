@@ -103,23 +103,23 @@ public class PlayerController : MonoBehaviour
     public void Build(string prefabName)
     {
         BuildableObject bo = Resources.Load<GameObject>(prefabName).GetComponent<BuildableObject>();
-        Debug.Log(bo);
         if (inventory.Contain("wood") >= bo.cost_wood && inventory.Contain("iron") >= bo.cost_iron && inventory.Contain("stone") >= bo.cost_stone)
         {
             inventory.Remove("wood", bo.cost_wood);
             inventory.Remove("iron", bo.cost_iron);
             inventory.Remove("stone", bo.cost_stone);
 
-            Instantiate(bo, transform.position, Quaternion.identity);
+            Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
         }
     }
 
     public void Repare()
     {
-        var go = _currentGo.GetComponent<BuildableObject>();
+        var go = _currentGo.GetComponent<ObstacleScript>();
+
         if (go != null)
         {
-            if (inventory.Contain("wood") > go.repair_wood && inventory.Contain("iron") > go.repair_iron && inventory.Contain("stone") > go.repair_stone)
+            if (inventory.Contain("wood") >= go.repair_wood && inventory.Contain("iron") >= go.repair_iron && inventory.Contain("stone") >= go.repair_stone)
             {
                 inventory.Remove("wood", go.cost_wood);
                 inventory.Remove("iron", go.cost_iron);
@@ -159,6 +159,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+
         if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food")
         {
             _currentGo = col.gameObject;
