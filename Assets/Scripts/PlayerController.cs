@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public Jurassic.Library.FunctionInstance callback;
     public List<FieldValue> tweakableValues;
 
+    private TimeManager _time;
     private int _hunger;
     private NavMeshAgent _navmeshagent;
     private TargetScript _navmeshTarget;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         inventory = new Inventory();
+        _time = FindObjectOfType<TimeManager>();
         _audioManager = FindObjectOfType<AudioManager>();
         _navmeshTarget = GetComponent<TargetScript>(); //pour specifier la destination
         _navmeshagent = _navmeshTarget.GetComponent<NavMeshAgent>(); //pour stopper ou reprendre la navigation
@@ -136,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
                 var obstacle = go.GetComponent<NavMeshObstacle>();
 
-                if (obstacle != null)
+                if (obstacle != null && !_time.day)
                 {
                     obstacle.enabled = true;
                 }
