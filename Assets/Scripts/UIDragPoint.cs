@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 using DG.Tweening;
 
+// force
 public class UIDragPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
 
