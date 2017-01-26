@@ -23,6 +23,7 @@ public class FetchValues : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		GetComponent<Dropdown> ().ClearOptions ();
 		Component c = Target.GetComponent (Component);
 		System.Reflection.PropertyInfo[] fields = c.GetType ().GetProperties ();
 		for (int k = 0; k <= fields.Length - 1; k++) {

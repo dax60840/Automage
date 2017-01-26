@@ -1,0 +1,860 @@
+fileFormatVersion: 2
+guid: 9c4f683a983f84d49ae627da83ce9c59
+timeCreated: 1485435517
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mockup_elements_separesv2_0
+    21300002: mockup_elements_separesv2_1
+    21300004: mockup_elements_separesv2_2
+    21300006: mockup_elements_separesv2_3
+    21300008: mockup_elements_separesv2_4
+    21300010: mockup_elements_separesv2_5
+    21300012: mockup_elements_separesv2_6
+    21300014: mockup_elements_separesv2_7
+    21300016: Bouger
+    21300018: mockup_elements_separesv2_9
+    21300020: mockup_elements_separesv2_10
+    21300022: mockup_elements_separesv2_11
+    21300024: mockup_elements_separesv2_12
+    21300026: mockup_elements_separesv2_13
+    21300028: mockup_elements_separesv2_14
+    21300030: mockup_elements_separesv2_15
+    21300032: mockup_elements_separesv2_16
+    21300034: mockup_elements_separesv2_17
+    21300036: mockup_elements_separesv2_18
+    21300038: mockup_elements_separesv2_19
+    21300040: mockup_elements_separesv2_20
+    21300042: mockup_elements_separesv2_21
+    21300044: mockup_elements_separesv2_22
+    21300046: mockup_elements_separesv2_23
+    21300048: mockup_elements_separesv2_24
+    21300050: mockup_elements_separesv2_25
+    21300052: mockup_elements_separesv2_26
+    21300054: mockup_elements_separesv2_27
+    21300056: mockup_elements_separesv2_28
+    21300058: mockup_elements_separesv2_29
+    21300060: mockup_elements_separesv2_30
+    21300062: mockup_elements_separesv2_31
+    21300064: mockup_elements_separesv2_32
+    21300066: mockup_elements_separesv2_33
+    21300068: mockup_elements_separesv2_34
+    21300070: mockup_elements_separesv2_36
+    21300072: mockup_elements_separesv2_37
+    21300074: List
+    21300076: mockup_elements_separesv2_39
+    21300078: Knob
+    21300080: Fin
+    21300082: NotesBackground
+    21300084: mockup_elements_separesv2_45
+    21300086: mockup_elements_separesv2_46
+    21300088: mockup_elements_separesv2_48
+    21300090: mockup_elements_separesv2_49
+    21300092: mockup_elements_separesv2_50
+    21300094: Action
+    21300096: mockup_elements_separesv2_52
+    21300098: mockup_elements_separesv2_53
+    21300100: mockup_elements_separesv2_54
+    21300102: mockup_elements_separesv2_55
+    21300104: mockup_elements_separesv2_56
+    21300106: mockup_elements_separesv2_57
+    21300108: mockup_elements_separesv2_58
+    21300110: Dropdown
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_0
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1912
+        width: 172
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 1901
+        width: 180
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_2
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1908
+        width: 72
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_3
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 1930
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_4
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1906
+        width: 95
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_5
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1932
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_6
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 1893
+        width: 107
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_7
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1908
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bouger
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1774
+        width: 103
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_9
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1785
+        width: 73
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_10
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1776
+        width: 123
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_11
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1785
+        width: 88
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_12
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 1785
+        width: 65
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_13
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 1783
+        width: 74
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_14
+      rect:
+        serializedVersion: 2
+        x: 1268
+        y: 1684
+        width: 86
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_15
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 1720
+        width: 82
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_16
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 974
+        width: 599
+        height: 912
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_17
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1666
+        width: 123
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_18
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1664
+        width: 89
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_19
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1715
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_20
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1714
+        width: 96
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_21
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1711
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_22
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 1712
+        width: 71
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_23
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1649
+        width: 60
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_24
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 1658
+        width: 60
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_25
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1709
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_26
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1621
+        width: 42
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_27
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 1658
+        width: 66
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_28
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1591
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_29
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1584
+        width: 84
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_30
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1576
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_31
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1555
+        width: 193
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_32
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 1589
+        width: 87
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_33
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1591
+        width: 101
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_34
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1588
+        width: 94
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_36
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1386
+        width: 1292
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_37
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1536
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: List
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 1102
+        width: 494
+        height: 374
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 34, y: 209, z: 35, w: 98}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_39
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1107
+        width: 1293
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Knob
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 989
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fin
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 951
+        width: 363
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 49, y: 33, z: 54, w: 23}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: NotesBackground
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 0
+        width: 672
+        height: 1040
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 96, y: 103, z: 104, w: 207}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_45
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 0
+        width: 355
+        height: 1042
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_46
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 835
+        width: 345
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_48
+      rect:
+        serializedVersion: 2
+        x: 2036
+        y: 31
+        width: 602
+        height: 911
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_49
+      rect:
+        serializedVersion: 2
+        x: 2638
+        y: 929
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_50
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 801
+        width: 148
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Action
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 717
+        width: 459
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 150, y: 24, z: 50, w: 33}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_52
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 608
+        width: 324
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_53
+      rect:
+        serializedVersion: 2
+        x: 2611
+        y: 527
+        width: 120
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_54
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 214
+        width: 148
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_55
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 27
+        width: 226
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_56
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 31
+        width: 172
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_57
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 42
+        width: 45
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mockup_elements_separesv2_58
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 43
+        width: 51
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dropdown
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1261
+        width: 622
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 51, y: 15, z: 72, w: 19}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
