@@ -142,6 +142,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Plant()
+    {
+        if(_currentGo == null)
+        {
+            if (inventory.Contain("seed") > 0)
+            {
+                inventory.Remove("seed", 1);
+
+                GameObject seed = (GameObject)Resources.Load("Bush_Little");
+                if (seed != null)
+                {
+                    Instantiate(seed, RoundVector(transform.position), Quaternion.identity);
+                    _audioManager.PlayCraftSFX();
+                }else
+                {
+                    Debug.Log("Resources/Bush_Little introuvable");
+                }
+            }
+        
+        }
+        else
+        {
+            Debug.Log("Opération impossible - espace occupé");
+        }
+    }
+
     public void Repare()
     {
         ObstacleScript go = null;
@@ -185,9 +211,15 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("harvest");
                 inventory.Add("food", 1);
+
+                if (Random.Range(0, 2) != 0)
+                {
+                    inventory.Add("seed", 1);
+                    Debug.Log("seed");
+                }
+
                 _audioManager.Play("player_pickup");
             }
-            
             else
             {
                 Destroy(_currentGo.gameObject);
@@ -212,9 +244,7 @@ public class PlayerController : MonoBehaviour
             _currentGo = null;
         }
     }
-
-
-
+    
 
     GameObject FindClosestGameObjectByTag(string tag)
     {

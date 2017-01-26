@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour {
     
     public float MusicVolume
     {
         get { return _as_music.volume; }
-        set { _as_music.volume = value; }
+        set { _as_music.volume = value; _musicVolume = value; }
     }
 
     public float SfxVolume
@@ -17,17 +18,19 @@ public class AudioManager : MonoBehaviour {
         set {
             _as_event.volume = value;
             _as_pitched.volume = value;
+            _sfxVolume = value;
         }
     }
 
-    public List<AudioClip> SFXClips = new List<AudioClip>();
-    public List<AudioClip> MusicClips = new List<AudioClip>();
 
     public bool Loop
     {
         get { return _as_event.loop; }
         set { _as_event.loop = value; }
     }
+
+    public List<AudioClip> SFXClips = new List<AudioClip>();
+    public List<AudioClip> MusicClips = new List<AudioClip>();
 
     public NavMeshAgent walkingAgent;
 
@@ -39,6 +42,9 @@ public class AudioManager : MonoBehaviour {
     private AudioSource _as_pitched;
     private AudioSource _as_music;
     private bool _walking;
+
+    private float _musicVolume;
+    private float _sfxVolume;
 
     void Start()
     {
@@ -65,7 +71,7 @@ public class AudioManager : MonoBehaviour {
             }
         }
 
-        MusicVolume = 0.5f;
+        MusicVolume = 0.1f;
         _as_music.loop = true;
         _as_music.clip = MusicClips[0];
         _as_music.Play();
@@ -77,6 +83,26 @@ public class AudioManager : MonoBehaviour {
         {
             PlayFootStep();
         }
+    }
+
+    public void SwitchMusic(bool day, float switchTime)
+    {
+        DOTween.To(() => _as_music.volume, (x) => _as_music.volume = x, 0, switchTime / 2).OnComplete(
+            () =>
+            {
+                _as_music.Stop();
+
+                if (day)
+                    _as_music.clip = MusicClips[0];
+                else
+                    _as_music.clip = MusicClips[1];
+
+                _as_music.Play();
+        
+                DOTween.To(() => _as_music.volume, (x) => _as_music.volume = x, _musicVolume, switchTime / 2);
+            });
+
+        
     }
 
     public void PlayFootStep()
