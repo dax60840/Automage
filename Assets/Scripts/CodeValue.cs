@@ -5,24 +5,21 @@ using UnityEngine.UI;
 
 public class CodeValue : MonoBehaviour
 {
-    private string Value;
+	protected string Value;
 
-    public string value
-    {
-        get
-        {
-            if (getText)
-                Value = GetComponent<Text>().text;
+	virtual public string value {
+		get {
+			if (getText)
+				Value = GetComponent<Text> ().text;
 
-            return Value;
-        }
-        set
-        {
-            Value = value;
-        }
-    }
+			return Value;
+		}
+		set {
+			Value = value;
+		}
+	}
 
-    public bool getText;
+	public bool getText;
 	// Use this for initialization
 	void Start ()
 	{
