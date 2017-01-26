@@ -96,9 +96,12 @@ public class PlayerController : MonoBehaviour
         _navmeshagent.SetDestination(RoundVector(transform.position + direction));
     }
 
-    Vector3 RoundVector(Vector3 vec)
+    Vector3 RoundVector(Vector3 vec, bool ignoreY = false)
     {
-        return new Vector3(Mathf.RoundToInt(vec.x), Mathf.RoundToInt(vec.y), Mathf.RoundToInt(vec.z) );
+        if(ignoreY)
+            return new Vector3(Mathf.RoundToInt(vec.x), vec.y, Mathf.RoundToInt(vec.z) );
+        else
+            return new Vector3(Mathf.RoundToInt(vec.x), Mathf.RoundToInt(vec.y), Mathf.RoundToInt(vec.z));
     }
 
     public void GoToObjectWithTag(string tag, CodeSerializer code, Jurassic.Library.FunctionInstance func)
@@ -129,7 +132,15 @@ public class PlayerController : MonoBehaviour
                 inventory.Remove("iron", bo.cost_iron);
                 inventory.Remove("stone", bo.cost_stone);
 
-                Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
+                var go = Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
+
+                var obstacle = go.GetComponent<NavMeshObstacle>();
+
+                if (obstacle != null)
+                {
+                    obstacle.enabled = true;
+                }
+
                 _audioManager.PlayCraftSFX();
             }
             else
@@ -153,12 +164,16 @@ public class PlayerController : MonoBehaviour
                 GameObject seed = (GameObject)Resources.Load("Bush_Little");
                 if (seed != null)
                 {
-                    Instantiate(seed, RoundVector(transform.position), Quaternion.identity);
+                    Vector3 pos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+                    Instantiate(seed, RoundVector(pos, true), Quaternion.identity);
                     _audioManager.PlayCraftSFX();
                 }else
                 {
                     Debug.Log("Resources/Bush_Little introuvable");
                 }
+            }else
+            {
+                Debug.Log("Pas assez de graines");
             }
         
         }

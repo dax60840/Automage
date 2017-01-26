@@ -23,7 +23,7 @@ public class TargetScript : MonoBehaviour
             return;
         }
 
-        if (_pc.callback != null && _pc.cs != null && m_agent.remainingDistance < .2f)
+        if (_pc != null && _pc.callback != null && _pc.cs != null && m_agent.remainingDistance < .2f )
         {
             Debug.Log("call it ");
             Jurassic.Library.FunctionInstance func = _pc.callback;

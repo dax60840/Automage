@@ -119,6 +119,13 @@ public class EnemyBehavior : MonoBehaviour {
         
     }
 
+    public void Exit()
+    {
+        _navmeshagent.Stop();
+        _navmeshTarget.m_target = FindClosestGameObjectByTag("Exit").transform;
+        _navmeshagent.Resume();
+    }
+
     GameObject FindClosestGameObjectByTag(string tag)
     {
         GameObject[] gos;

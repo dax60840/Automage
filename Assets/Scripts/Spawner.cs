@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
+    public bool active;
+
     public GameObject mob;
     public int maxMobs;
     public float spawnTime;
@@ -13,16 +15,31 @@ public class Spawner : MonoBehaviour {
 	
     void Start()
     {
-        _timeStamp = Time.time + spawnTime;
+        active = false;
+        _timeStamp = 0;
+        Stop();
     }
 	
 
 	void Update () {
 		if(_timeStamp < Time.time && _instantiateMobs < maxMobs)
         {
-            Instantiate(mob);
+            Instantiate(mob, transform.position, Quaternion.identity);
             _instantiateMobs++;
             _timeStamp = Time.time + spawnTime;
         }
 	}
+
+    public void Reset()
+    {
+        active = true;
+        _instantiateMobs = 0;
+        _timeStamp = Time.time + spawnTime;
+    }
+
+    public void Stop()
+    {
+        active = false;
+        _instantiateMobs = maxMobs + 1;
+    }
 }
