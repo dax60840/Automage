@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private GameObject _currentGo;
     private Text waitForClick;
-    public AudioManager _audioManager;
+    private AudioManager _audioManager;
+    private bool _walking;
 
 
     void Awake()
@@ -74,6 +75,19 @@ public class PlayerController : MonoBehaviour
                 }
                 waitForClick = null;
             }
+        }
+
+        //footstep volume
+        if(_navmeshagent.velocity.magnitude > 0.1f && !_walking)
+        {
+            _audioManager.walkingAgent = _navmeshagent;
+            _walking = true;
+            _audioManager.PlayFootStep();
+        }else if(_navmeshagent.velocity.magnitude < 0.5f && _walking)
+        {
+            _walking = false;
+            _audioManager.Stop();
+            _audioManager.walkingAgent = null;
         }
     }
 
@@ -159,6 +173,7 @@ public class PlayerController : MonoBehaviour
             Hunger += quantity;
             inventory.Remove("food", quantity);
             Debug.Log("miam");
+            _audioManager.Play("player_eat");
         }
     }
 
@@ -170,6 +185,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("harvest");
                 inventory.Add("food", 1);
+                _audioManager.Play("player_pickup");
             }
             
             else
