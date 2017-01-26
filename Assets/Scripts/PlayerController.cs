@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     
     public int maxHunger;
 
+    [Tweakable]
     public int Hunger
     {
         get { return _hunger; }
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public List<TagValue> tagList;
     public Object cs;
     public Jurassic.Library.FunctionInstance callback;
-    public AudioManager audioManager;
+    public List<FieldValue> tweakableValues;
 
     private int _hunger;
     private NavMeshAgent _navmeshagent;
@@ -35,11 +36,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private GameObject _currentGo;
     private Text waitForClick;
+    public AudioManager _audioManager;
 
 
-    void Start()
+    void Awake()
     {
         inventory = new Inventory();
+        _audioManager = FindObjectOfType<AudioManager>();
         _navmeshTarget = GetComponent<TargetScript>(); //pour specifier la destination
         _navmeshagent = _navmeshTarget.GetComponent<NavMeshAgent>(); //pour stopper ou reprendre la navigation
 
@@ -113,7 +116,7 @@ public class PlayerController : MonoBehaviour
                 inventory.Remove("stone", bo.cost_stone);
 
                 Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
-                audioManager.PlayCraftSFX();
+                _audioManager.PlayCraftSFX();
             }
             else
             {
