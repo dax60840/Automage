@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             Move(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
@@ -222,24 +223,27 @@ public class PlayerController : MonoBehaviour
 
     public void Harvest()
     {
-        if (_currentGo != null && _currentGo.tag == "Food")
+        if (_currentGo != null && (_currentGo.tag == "Resource" || _currentGo.tag == "Food"))
         {
-            if (_currentGo.GetComponent<Bush>().Eat())
+            if (_currentGo.GetComponent<ResourceContainer>())
             {
-                Debug.Log("harvest");
-                inventory.Add("food", 1);
 
-                if (Random.Range(0, 2) != 0)
+                List<Resource> extracted = _currentGo.GetComponent<ResourceContainer>().ExtractResource();
+
+                if (extracted.Count > 0)
                 {
-                    inventory.Add("seed", 1);
-                    Debug.Log("seed");
-                }
+                    foreach (Resource r in extracted)
+                    {
+                        inventory.Add(r.name, r.quantity);
+                    }
 
-                _audioManager.Play("player_pickup");
-            }
-            else
-            {
-                Destroy(_currentGo.gameObject);
+                    _audioManager.Play("player_pickup");
+                }
+                else
+                {
+                    if(_currentGo.tag == "Food")
+                        Destroy(_currentGo.gameObject);
+                }
             }
         }
     }
@@ -247,7 +251,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
 
-        if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food")
+        if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food" || col.gameObject.tag == "Resource")
         {
             _currentGo = col.gameObject;
         }

@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     public int health;
     public int attack;
+    public float hurtRate;
     public int coolDown;
     public int pathCheckInterval;
 
@@ -15,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour {
     private GameObject _attackTarget;
     private ObstacleScript _obstacleTarget;
     private Rigidbody _rb;
+    private AudioManager _am;
 
     private bool _leaving;
     private bool _attacking;
@@ -22,10 +24,15 @@ public class EnemyBehavior : MonoBehaviour {
     private float _timeStampAttack = 0;
     private float _timeStampPathCheck;
 
+
+    private float _timeStampHurt;
+
     // Use this for initialization
     void Start () {
         _leaving = false;
         _attacking = false;
+
+        _am = FindObjectOfType<AudioManager>();
 
         _navmeshTarget = GetComponent<TargetScript>(); //pour specifier la destination
         _navmeshagent = _navmeshTarget.GetComponent<NavMeshAgent>(); //pour stopper ou reprendre la navigation
@@ -35,6 +42,17 @@ public class EnemyBehavior : MonoBehaviour {
 
     void Update()
     {
+        if(health <= 0)
+        {
+            Death();
+        }
+
+        if(_timeStampHurt <= Time.time)
+        {
+            health--;
+            _timeStampHurt = hurtRate + Time.time;
+        }
+
         if (_timeStampPathCheck <= Time.time)
         {
             _navmeshagent.Stop();
@@ -106,6 +124,7 @@ public class EnemyBehavior : MonoBehaviour {
         if (_obstacleTarget == null)
         {
             _obstacleTarget = _attackTarget.GetComponent<ObstacleScript>();
+            _am.Play("enemy_punch");
         }
 
         _attacking = true;
@@ -153,5 +172,10 @@ public class EnemyBehavior : MonoBehaviour {
             _leaving = true;
             return FindClosestGameObjectByTag("Exit");
         }
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 }

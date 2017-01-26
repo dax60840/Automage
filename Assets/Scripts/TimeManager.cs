@@ -72,7 +72,8 @@ public class TimeManager : MonoBehaviour {
 
     void NavMeshObstacleEnabled(bool value)
     {
-        NavMeshObstacle[] obstacles = FindObjectsOfType<NavMeshObstacle>();
+        NavMeshObstacle[] obstacles = null;
+        obstacles  = FindObjectsOfType<NavMeshObstacle>();
 
         if (obstacles != null)
         {

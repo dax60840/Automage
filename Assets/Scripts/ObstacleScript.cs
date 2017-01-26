@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObstacleScript : BuildableObject {
     
-    public int attack;
-
     private Renderer _rend;
     private float _timehurt;
     private float _timeStampHurt;

@@ -12,9 +12,11 @@ public class Spawner : MonoBehaviour {
 
     private float _timeStamp;
     private int _instantiateMobs;
+    private AudioManager _am;
 	
     void Start()
     {
+        _am = FindObjectOfType<AudioManager>();
         active = false;
         _timeStamp = 0;
         Stop();
@@ -25,6 +27,7 @@ public class Spawner : MonoBehaviour {
 		if(_timeStamp < Time.time && _instantiateMobs < maxMobs)
         {
             Instantiate(mob, transform.position, Quaternion.identity);
+            _am.Play("enemy_spawn");
             _instantiateMobs++;
             _timeStamp = Time.time + spawnTime;
         }
