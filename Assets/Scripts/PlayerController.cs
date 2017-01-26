@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public List<TagValue> tagList;
     public Object cs;
     public Jurassic.Library.FunctionInstance callback;
+    public AudioManager audioManager;
 
     private int _hunger;
     private NavMeshAgent _navmeshagent;
@@ -112,6 +113,7 @@ public class PlayerController : MonoBehaviour
                 inventory.Remove("stone", bo.cost_stone);
 
                 Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
+                audioManager.PlayCraftSFX();
             }
             else
             {
@@ -125,7 +127,10 @@ public class PlayerController : MonoBehaviour
 
     public void Repare()
     {
-        var go = _currentGo.GetComponent<ObstacleScript>();
+        ObstacleScript go = null;
+
+        if (_currentGo != null)
+            go = _currentGo.GetComponent<ObstacleScript>();
 
         if (go != null)
         {

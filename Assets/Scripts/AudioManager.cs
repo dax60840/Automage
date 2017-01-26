@@ -4,17 +4,57 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-    public List<AudioClip> SFXClips;
+    public List<AudioClip> SFXClips = new List<AudioClip>();
+
+    private List<AudioClip> _craftSFX = new List<AudioClip>();
+    private List<AudioClip> _birdSFX = new List<AudioClip>();
+
+
 
     private AudioSource _as;
 
-    void Awake()
+    void Start()
     {
         _as = GetComponent<AudioSource>();
+
+        foreach(AudioClip ac in SFXClips)
+        {
+            if (ac.name.Contains("craft"))
+            {
+                _craftSFX.Add(ac);
+            }
+
+            if (ac.name.Contains("bird"))
+            {
+                _birdSFX.Add(ac);
+            }
+        }
     }
-	
-	public void PlayRandom()
+
+    public void PlayCraftSFX()
     {
-        _as.PlayOneShot(SFXClips[Random.Range(0, SFXClips.Count - 1)]);
+        PlayRandom(_craftSFX);
+    }
+
+    public void PlayVoiceSFX()
+    {
+        PlayRandom(_birdSFX);
+    }
+
+    public void PlayRandom(List<AudioClip> list)
+    {
+        _as.PlayOneShot(list[Random.Range(0, list.Count)]);
+    }
+
+    public void Play(string fileName)
+    {
+        for(int i = 0; i < SFXClips.Count - 1; i++)
+        {
+            if(SFXClips[i].name == fileName)
+            {
+                _as.PlayOneShot(SFXClips[i]);
+                return;
+            }
+        }
     }
 }

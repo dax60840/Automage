@@ -8,11 +8,12 @@ using DG.Tweening;
 
 public class UIDragPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
+    private AudioManager _am;
 
 	// Use this for initialization
 	void Start ()
 	{
-		
+        _am = FindObjectOfType<AudioManager>();
 	}
 	
 	// Update is called once per frame
@@ -47,6 +48,7 @@ public class UIDragPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 			data.pointerDrag.GetComponent<CodeComponent> ().isAttached = true;
 			data.pointerDrag.transform.SetParent (transform.parent.parent);
 			data.pointerDrag.transform.SetAsLastSibling ();
+            _am.Play("block_connected");   
 		}
 		transform.parent.SetAsLastSibling ();
 	}
