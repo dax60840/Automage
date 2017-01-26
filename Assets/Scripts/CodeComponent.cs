@@ -63,4 +63,26 @@ public class CodeComponent : MonoBehaviour, IDragHandler,  IBeginDragHandler, IE
 			velocity *= .95f;
 		}
 	}
+
+
+	//	void Start ()
+	//	{
+	//		test.GetComponent<Selectable> ().Select ();
+	//		GetComponentInChildren<Text> ().text = Target.name.ToUpper ();
+	//
+	//		Component[] components = Target.GetComponents (typeof(SuperEntity));
+	//		for (int j = 0; j <= components.Length - 1; j++) {
+	//			System.Reflection.FieldInfo[] fields = components [j].GetType ().GetFields ();
+	//			for (int k = 0; k <= fields.Length - 1; k++) {
+	//				if (fields [k].GetCustomAttributes (typeof(Tweakable), true).Length == 1) {
+	//					if (fields [k].GetCustomAttributes (typeof(RangeAttribute), true).Length == 1) {
+	//						RangeAttribute range = ((RangeAttribute)(fields [k].GetCustomAttributes (typeof(RangeAttribute), true) [0]));
+	//						Type t = fields [k].GetValue (components [j]).GetType ();
+	//						AddItem (t, fields [k].Name, range.min, range.max);
+	//					}
+	//				}
+	//			}
+	//		}
+	//	}
+	//
 }

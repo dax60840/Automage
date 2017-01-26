@@ -51,16 +51,9 @@ public class InputManager : MonoBehaviour
 
 			if (Input.GetKeyDown (code)) {
 				if (bindNext != null) {
-					Debug.Log (code);
 					BindedInput newBindedInput = new BindedInput (bindNext, code);
 					bindings.Add (newBindedInput);
 					onBindedNext (code.ToString (), bindings.IndexOf (newBindedInput));
-
-					for (int i = 0; i <= bindings.Count - 1; i++) {
-						
-						Debug.Log (i + " => " + bindings [i].code);
-						
-					}
 
 					bindNext = null;
 				}

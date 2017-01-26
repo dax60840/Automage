@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using DG.Tweening;
 
+// force
 public class Resize : MonoBehaviour
 {
 	public Transform target;

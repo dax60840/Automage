@@ -12,11 +12,11 @@ public class CodeSerializer : MonoBehaviour
 	void Awake ()
 	{
 
-        PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+		PlayerController playerController = GameObject.Find ("Player").GetComponent<PlayerController> ();
 		engine = new ScriptEngine ();
 		engine.EnableExposedClrTypes = true;
-        //engine.EnableDebugging = true;
-        engine.ForceStrictMode = true;
+		//engine.EnableDebugging = true;
+		engine.ForceStrictMode = true;
         
 		engine.SetGlobalValue ("Mathf", typeof(Mathf));
 		engine.SetGlobalValue ("Input", typeof(Input));
@@ -26,11 +26,11 @@ public class CodeSerializer : MonoBehaviour
 		engine.SetGlobalValue ("Color", typeof(Color));
 		engine.SetGlobalValue ("Physics", typeof(Physics));
 		engine.SetGlobalValue ("Player", playerController);
-        engine.SetGlobalValue("Me", (object)this);
+		engine.SetGlobalValue ("Me", (object)this);
 
-        //		engine.SetGlobalFunction ("setTimeout", new Action<Jurassic.Library.FunctionInstance, int> (setTimeout));
-        //		engine.SetGlobalFunction ("setInterval", new Action<Jurassic.Library.FunctionInstance, int> (setInterval));
-        engine.SetGlobalFunction ("log", new Action<string> (Debug.Log));
+		//		engine.SetGlobalFunction ("setTimeout", new Action<Jurassic.Library.FunctionInstance, int> (setTimeout));
+		//		engine.SetGlobalFunction ("setInterval", new Action<Jurassic.Library.FunctionInstance, int> (setInterval));
+		engine.SetGlobalFunction ("log", new Action<string> (Debug.Log));
 	}
 
 
@@ -62,6 +62,7 @@ public class CodeSerializer : MonoBehaviour
 				// flush all if new line
 				if (parents.Length == 1) {
 					foreach (CodeComponent comp in registeredParents) {
+						Debug.Log ("flush new line");
 
 						string lineFlushed = GetLine (comp);
 						code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
@@ -75,19 +76,19 @@ public class CodeSerializer : MonoBehaviour
 				// flush parent's closing
 				parents = components [i].GetComponentsInParent<CodeComponent> ();
 				if (registeredParents.Count > 0 && parents.Length > 1) {
-					Debug.Log ("----------");
-					Debug.Log (components [i]);
-					Debug.Log (parents [1] == registeredParents [registeredParents.Count - 1]);
-					Debug.Log (components [i].transform.GetSiblingIndex () == (components [i].transform.parent.childCount - 1));
-					Debug.Log (line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length == 1);
+					Debug.Log (line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length);
+					Debug.Log (line);
 					if (parents [1] == registeredParents [registeredParents.Count - 1] &&
 					    components [i].transform.GetSiblingIndex () == (components [i].transform.parent.childCount - 2) &&
 					    line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length == 1) {
 
 						Debug.Log ("flushing " + parents [1].name);
+						// Flushing is not working if two indented instructions are following each other without a single instructions in
+
 						string lineFlushed = GetLine (registeredParents [registeredParents.Count - 1]);
 						code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
 						registeredParents.RemoveAt (registeredParents.Count - 1);
+
 
 					}
 				}
@@ -103,8 +104,10 @@ public class CodeSerializer : MonoBehaviour
 
 		// flush last parent
 		if (registeredParents.Count > 0) {
-			foreach (CodeComponent comp in registeredParents) {
-
+//			foreach (CodeComponent comp in registeredParents) {
+			for (int j = registeredParents.Count - 1; j >= 0; j--) {
+				CodeComponent comp = registeredParents [j];
+				Debug.Log ("flush last parents");
 				string lineFlushed = GetLine (comp);
 				code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
 			}
@@ -116,6 +119,15 @@ public class CodeSerializer : MonoBehaviour
 	}
 
 
+	/*public void Load ()
+	{
+		
+	}
+
+	public void Load ()
+	{
+		
+	}*/
 
 	void Update ()
 	{
