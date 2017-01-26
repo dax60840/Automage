@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CodeComponent : MonoBehaviour, IDragHandler,  IBeginDragHandler, IEndDragHandler
 {
@@ -11,18 +12,24 @@ public class CodeComponent : MonoBehaviour, IDragHandler,  IBeginDragHandler, IE
 	public CodeValue[] values;
 	public TextAsset script;
 
-	private Vector2 velocity;
-	private Vector2 offset;
-	private Vector2 lastPos;
+	protected Vector2 velocity;
+	protected Vector2 offset;
+	protected Vector2 lastPos;
+
+	public Vector2 smallSize;
+	public Vector2 bigSize;
 
 	public bool isAttached = false;
 
-	private bool isDragging = false;
+	protected bool isDragging = false;
 
 
 	public int resistanceDetach = 50;
+
+
+	public GameObject[] extend;
 	// Use this for initialization
-	public void OnDrag (PointerEventData eventData)
+	virtual public void OnDrag (PointerEventData eventData)
 	{
 		//		Debug.Log xx(eventData.position);
 
@@ -34,15 +41,18 @@ public class CodeComponent : MonoBehaviour, IDragHandler,  IBeginDragHandler, IE
 			lastPos = pos;
 		} else {
 			if ((new Vector3 (eventData.position.x, eventData.position.y, 0) - GetComponent<RectTransform> ().position).magnitude > resistanceDetach) {
+				Vector2 pos = new Vector2 (GetComponent<RectTransform> ().position.x, GetComponent<RectTransform> ().position.y);
+				Retract ();
 				isAttached = false;
-				transform.SetParent (GetComponentInParent<Canvas> ().transform);
+				transform.SetParent (GetComponentInParent<NoteParent> ().transform);
 				transform.SetAsFirstSibling ();
 			}
 		}
 	}
 
-	public void OnBeginDrag (PointerEventData eventData)
+	virtual public void OnBeginDrag (PointerEventData eventData)
 	{
+		transform.SetAsFirstSibling ();
 		Vector2 pos = new Vector2 (GetComponent<RectTransform> ().position.x, GetComponent<RectTransform> ().position.y);
 		offset = (pos - eventData.position);
 
@@ -50,13 +60,16 @@ public class CodeComponent : MonoBehaviour, IDragHandler,  IBeginDragHandler, IE
 		NoteManager.Singleton.isDragging = true;
 	}
 
-	public void OnEndDrag (PointerEventData eventData)
+	virtual public void OnEndDrag (PointerEventData eventData)
 	{
 		isDragging = false;
 		NoteManager.Singleton.isDragging = false;
+
+		if (!isAttached)
+			transform.SetAsLastSibling ();
 	}
 
-	void Update ()
+	virtual protected void Update ()
 	{
 		if (!isDragging && !isAttached) {
 			GetComponent<RectTransform> ().position += new Vector3 (velocity.x, velocity.y, 0) * Time.deltaTime;
@@ -64,25 +77,48 @@ public class CodeComponent : MonoBehaviour, IDragHandler,  IBeginDragHandler, IE
 		}
 	}
 
+	virtual protected void Retract ()
+	{
+		GetComponent<RectTransform> ().DOKill (true);
+		GetComponent<RectTransform> ().DOPunchScale (Vector3.one * .5f, .3f, 3);
+		GetComponent<RectTransform> ().DOSizeDelta (smallSize, .2f).SetDelay (.1f).SetEase (Ease.OutExpo);
+		foreach (GameObject GO in extend) {
+			GO.transform.DOKill (true);
+			GO.transform.DOScaleX (0, .1f).SetEase (Ease.OutExpo);
+		}
+	}
 
-	//	void Start ()
-	//	{
-	//		test.GetComponent<Selectable> ().Select ();
-	//		GetComponentInChildren<Text> ().text = Target.name.ToUpper ();
-	//
-	//		Component[] components = Target.GetComponents (typeof(SuperEntity));
-	//		for (int j = 0; j <= components.Length - 1; j++) {
-	//			System.Reflection.FieldInfo[] fields = components [j].GetType ().GetFields ();
-	//			for (int k = 0; k <= fields.Length - 1; k++) {
-	//				if (fields [k].GetCustomAttributes (typeof(Tweakable), true).Length == 1) {
-	//					if (fields [k].GetCustomAttributes (typeof(RangeAttribute), true).Length == 1) {
-	//						RangeAttribute range = ((RangeAttribute)(fields [k].GetCustomAttributes (typeof(RangeAttribute), true) [0]));
-	//						Type t = fields [k].GetValue (components [j]).GetType ();
-	//						AddItem (t, fields [k].Name, range.min, range.max);
-	//					}
-	//				}
-	//			}
-	//		}
-	//	}
-	//
+	virtual protected void Extend ()
+	{
+		GetComponent<RectTransform> ().DOKill (true);
+		GetComponent<RectTransform> ().DOPunchScale (Vector3.one * .6f, .2f, 3);
+		GetComponent<RectTransform> ().DOSizeDelta (bigSize, .3f).SetEase (Ease.InExpo);
+		foreach (GameObject GO in extend) {
+			GO.transform.DOKill (true);
+			GO.transform.DOScaleX (1, .2f).SetDelay (.3f).SetEase (Ease.OutExpo);
+		}
+	}
+
+
+	virtual public void OnHover ()
+	{
+		
+//		transform.DOScale (Vector3.one * 1.2f, .3f).SetLoops (-1);
+	}
+
+	virtual public void OnUnhover ()
+	{
+//		transform.DOKill (true);
+	}
+
+	virtual public void Attach ()
+	{
+		isAttached = true;
+		Extend ();
+	}
+
+	virtual protected void Start ()
+	{
+		Retract ();
+	}
 }

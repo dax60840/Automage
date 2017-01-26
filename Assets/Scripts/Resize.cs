@@ -26,11 +26,13 @@ public class Resize : MonoBehaviour
 
 	float CalculateHeight ()
 	{
-		float height = transform.GetChild (0).GetComponent<RectTransform> ().sizeDelta.y;
+//		float height = transform.GetChild (0).GetComponent<RectTransform> ().sizeDelta.y;
+		float height = GetComponent<CodeComponent> ().bigSize.y;
 
 		float totalHeight = height;
 		for (int i = 0; i <= target.transform.childCount - 1; i++) {
-			totalHeight += target.transform.GetChild (i).GetComponent<RectTransform> ().sizeDelta.y;
+			if (target.transform.GetChild (i).GetComponent<RectTransform> ().sizeDelta.x > 0)
+				totalHeight += target.transform.GetChild (i).GetComponent<RectTransform> ().sizeDelta.y;
 		}
 		return totalHeight;
 	}
@@ -44,7 +46,7 @@ public class Resize : MonoBehaviour
 		
 		float totalHeight = CalculateHeight ();
 		lastHeight = totalHeight;
-
+		Debug.Log (totalHeight);
 		GetComponent<RectTransform> ().DOKill (true);
 		GetComponent<RectTransform> ().DOSizeDelta (new Vector2 (GetComponent<RectTransform> ().sizeDelta.x, totalHeight), .3f).SetEase (Ease.InOutBounce).OnUpdate (() => {
 			parent.enabled = false;

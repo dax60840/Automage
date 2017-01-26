@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 	public Jurassic.Library.FunctionInstance callback;
 	public List<FieldValue> tweakableValues = new List<FieldValue> ();
 
-	private int _hunger = 5;
+	private int _hunger = 2;
 
 	[Tweakable]
 	public float test {
