@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Inventory inventory;
     public List<TagValue> tagList;
+    public List<BuildValue> buildList;
     public Object cs;
     public Jurassic.Library.FunctionInstance callback;
     public List<FieldValue> tweakableValues;
@@ -124,8 +125,19 @@ public class PlayerController : MonoBehaviour
         waitForClick = t;
     }
 
-    public void Build(string prefabName)
+    public void Build(string objectName)
     {
+        string prefabName = "";
+
+        foreach(BuildValue bv in buildList)
+        {
+            if(bv.objectName == objectName)
+            {
+                prefabName = bv.prefabName;
+                return;
+            }
+        }
+
         if (_currentGo == null)
         {
             BuildableObject bo = Resources.Load<GameObject>(prefabName).GetComponent<BuildableObject>();
