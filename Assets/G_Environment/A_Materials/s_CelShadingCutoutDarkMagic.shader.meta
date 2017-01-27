@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 696f016318cd07246958118c6b19a95d
+timeCreated: 1485529233
+licenseType: Pro
+ShaderImporter:
+  defaultTextures:
+  - _DissolveMask: {fileID: 2800000, guid: e80c3c84ea861404d8a427db8b7abf04, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
