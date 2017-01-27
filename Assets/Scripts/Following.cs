@@ -11,7 +11,18 @@ public class Following : MonoBehaviour
 
 	public float distance = 11;
 	private float lastDistance = 11;
+
+	public static Following Singleton;
 	// Use this for initialization
+	void Awake ()
+	{
+		if (Following.Singleton == null) {
+			Following.Singleton = this;
+		} else {
+			Destroy (gameObject);
+		}
+	}
+
 	void Start ()
 	{
 		Player = GameObject.Find ("Player");
@@ -25,7 +36,7 @@ public class Following : MonoBehaviour
 
 		if (lastDistance != distance) {
 			cam.transform.DOKill (true);
-			cam.transform.DOLocalMove (new Vector3 (0, distance * .36f, -distance * .64f), .5f).SetEase (Ease.OutExpo);
+			cam.transform.DOLocalMove (new Vector3 (0, distance * .36f, -distance * .64f), 1.5f).SetEase (Ease.OutExpo);
 			lastDistance = distance;
 		}
 	}

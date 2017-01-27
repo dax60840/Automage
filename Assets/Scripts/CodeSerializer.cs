@@ -12,6 +12,10 @@ public class CodeSerializer : MonoBehaviour
 	public bool everyTick = false;
 	private int tick = 0;
 
+	public bool forceRefresh = false;
+
+	private int lastCountChild = 0;
+
 	void Awake ()
 	{
 
@@ -49,6 +53,8 @@ public class CodeSerializer : MonoBehaviour
 	void Start ()
 	{
 		transform.SetAsLastSibling ();
+
+
 	}
 
 
@@ -111,6 +117,7 @@ public class CodeSerializer : MonoBehaviour
 			registeredParents.Clear ();
 		}
 		engine.Execute (code);
+		GC.Collect ();
 	}
 
 
@@ -124,15 +131,29 @@ public class CodeSerializer : MonoBehaviour
 		
 	}*/
 
+	public int CountChild (Transform t)
+	{
+		int count = t.childCount;
+		for (int i = 0; i <= t.childCount - 1; i++) {
+			Transform trans = t.GetChild (i);
+			count += CountChild (trans);
+		}
+		return count;
+	}
+
 	void Update ()
 	{
 		tick++;
-
 		if (everyTick) {
-			if (tick % 10 == 0)
+			if (lastCountChild != CountChild (transform) || (Picker.Singleton.isPicking == false && Picker.Singleton.lastIsPicking == true)) {
+				lastCountChild = CountChild (transform);
+
 				Execute ();
-			else
+		
+				Debug.Log ("refresh");
+			} else {
 				engine.Execute (code);
+			}				
 		}
 //		engine.Execute (codeString);
 	}

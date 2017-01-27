@@ -8,13 +8,11 @@ public class Blinking : MonoBehaviour
 {
 
 	// Use this for initialization
-	[ExecuteInEditMode]
 	void Start ()
 	{
 		Loop ();
 	}
 
-	[ExecuteInEditMode]
 	void Loop ()
 	{
 		GetComponent<Text> ().DOFade (.3f, .3f).SetEase (Ease.InOutBounce).OnComplete (() => {
