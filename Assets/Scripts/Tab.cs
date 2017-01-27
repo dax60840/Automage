@@ -8,7 +8,6 @@ using DG.Tweening;
 
 public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
 	public int order;
 
 	public GameObject script;
@@ -58,6 +57,7 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			}
 		}
 		script.transform.DOScale (Vector3.one, .3f).SetDelay (.2f).SetEase (Ease.OutElastic);
+        TabManager.Singleton.index = order;
 	}
 
 	public void OnPointerEnter (PointerEventData eventData)

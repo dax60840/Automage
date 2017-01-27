@@ -6,27 +6,42 @@ using DG.Tweening;
 public class Following : MonoBehaviour
 {
 
-	GameObject Player;
-	Camera cam;
+    GameObject Player;
+    Camera cam;
 
-	public float distance = 11;
-	private float lastDistance = 11;
-	// Use this for initialization
-	void Start ()
-	{
-		Player = GameObject.Find ("Player");
-		cam = GetComponentInChildren<Camera> ();
-	}
-	
-	// Update is called once per frame
-	void LateUpdate ()
-	{
-		transform.position = Vector3.Lerp (transform.position, Player.transform.position, Time.deltaTime);
+    public float distance = 11;
+    private float lastDistance = 11;
 
-		if (lastDistance != distance) {
-			cam.transform.DOKill (true);
-			cam.transform.DOLocalMove (new Vector3 (0, distance * .3f, -distance * .7f), .5f).SetEase (Ease.OutExpo);
-			lastDistance = distance;
-		}
-	}
+    public static Following Singleton;
+    // Use this for initialization
+    void Awake()
+    {
+        if (Following.Singleton == null)
+        {
+            Following.Singleton = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        Player = GameObject.Find("Player");
+        cam = GetComponentInChildren<Camera>();
+    }
+
+    // Update is called once per frame
+    void LateUpdate()
+    {
+        transform.position = Vector3.Lerp(transform.position, Player.transform.position, Time.deltaTime);
+
+        if (lastDistance != distance)
+        {
+            cam.transform.DOKill(true);
+            cam.transform.DOLocalMove(cam.transform.forward * -distance, 1.5f).SetEase(Ease.OutExpo);
+            lastDistance = distance;
+        }
+    }
 }

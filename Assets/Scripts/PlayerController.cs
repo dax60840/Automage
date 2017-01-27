@@ -113,9 +113,10 @@ public class PlayerController : MonoBehaviour
                     {
                         waitForClick.text = t.title;
                         waitForClick.GetComponent<CodeValue>().value = tag;
+                        Picker.Singleton.StopPick();
+                        waitForClick = null;
                     }
                 }
-                waitForClick = null;
             }
         }
 
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour
 
     public void ClickGameObject(Text t)
     {
+        Picker.Singleton.Pick();
         waitForClick = t;
     }
 
