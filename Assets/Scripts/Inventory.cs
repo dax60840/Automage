@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory {
 
     Dictionary<string, int> inventory = new Dictionary<string, int>();
 
-    void OnCollisionEnter(Collision col)
+    Text food;
+    Text seed;
+    Text wood;
+    Text stone;
+    Text iron;
+
+    public Inventory(Text f, Text s, Text w, Text st, Text i)
     {
-        if (col.transform.tag == "stuff" && !inventory.ContainsKey(col.transform.name))
-        {
-            //ajouter à l'inventaire
-        }
+        food = f;
+        seed = s;
+        wood = w;
+        stone = st;
+        iron = i;
     }
 
     public int Contain(string item)
@@ -35,6 +43,8 @@ public class Inventory {
                 inventory[item] += quantity;
             }
         }
+
+        UpdateUI();
     }
 
     public void Remove(string item, int quantity)
@@ -51,5 +61,16 @@ public class Inventory {
                 }
             }
         }
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        /*
+        food.text = "" + inventory["food"].ToString("000");
+        //seed.text = "" + inventory["seed0"].ToString("000");
+        wood.text = "" + inventory["wood"].ToString("000");
+        stone.text = "" + inventory["stone"].ToString("000");
+        iron.text = "" + inventory["iron"].ToString("000");*/
     }
 }

@@ -24,7 +24,6 @@ public class ResourceContainer : MonoBehaviour
 
             foreach(Resource r in resources)
             {
-                Debug.Log(r.name +" " + r.quantity);
                 if(r.probability >= Random.Range(0.0f, 1f) && r.quantity > 0)
                 {
                     Resource unit = new Resource(r);

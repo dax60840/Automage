@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
     public Jurassic.Library.FunctionInstance callback;
     public List<FieldValue> tweakableValues;
 
+    public Text food;
+    public Text seed;
+    public Text wood;
+    public Text stone;
+    public Text iron;
+
     private TimeManager _time;
     private int _hunger;
     private NavMeshAgent _navmeshagent;
@@ -44,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        inventory = new Inventory();
+        inventory = new Inventory(food, seed, wood, stone, iron);
         _time = FindObjectOfType<TimeManager>();
         _audioManager = FindObjectOfType<AudioManager>();
         _navmeshTarget = GetComponent<TargetScript>(); //pour specifier la destination
@@ -134,9 +140,11 @@ public class PlayerController : MonoBehaviour
             if(bv.objectName == objectName)
             {
                 prefabName = bv.prefabName;
-                return;
+                break;
             }
         }
+
+        Debug.Log(objectName);
 
         if (_currentGo == null)
         {
