@@ -77,7 +77,7 @@ public class TimeManager : MonoBehaviour {
 
         if (obstacles != null)
         {
-            for (int i = 0; i < obstacles.Length - 1; i++)
+            for (int i = 0; i < obstacles.Length; i++)
             {
                 obstacles[i].enabled = value;
             }

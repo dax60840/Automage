@@ -46,12 +46,14 @@ public class PlayerController : MonoBehaviour
     private Text waitForClick;
     private AudioManager _audioManager;
     private bool _walking;
+    private Animator _anim;
 
 
     void Awake()
     {
         inventory = new Inventory(food, seed, wood, stone, iron);
         _time = FindObjectOfType<TimeManager>();
+        _anim = GetComponentInChildren<Animator>();
         _audioManager = FindObjectOfType<AudioManager>();
         _navmeshTarget = GetComponent<TargetScript>(); //pour specifier la destination
         _navmeshagent = _navmeshTarget.GetComponent<NavMeshAgent>(); //pour stopper ou reprendre la navigation
@@ -92,13 +94,17 @@ public class PlayerController : MonoBehaviour
         {
             _audioManager.walkingAgent = _navmeshagent;
             _walking = true;
+            _anim.SetBool("Walking", true);
             _audioManager.PlayFootStep();
         }else if(_navmeshagent.velocity.magnitude < 0.5f && _walking)
         {
             _walking = false;
+            _anim.SetBool("Walking", false);
             _audioManager.Stop();
             _audioManager.walkingAgent = null;
         }
+
+        _anim.SetFloat("Speed", _navmeshagent.velocity.magnitude / (_navmeshagent.speed * 0.5f));
     }
 
     public void Move(Vector3 direction)
@@ -165,6 +171,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 _audioManager.PlayCraftSFX();
+                _anim.SetTrigger("Build");
             }
             else
             {
@@ -190,6 +197,7 @@ public class PlayerController : MonoBehaviour
                     Vector3 pos = new Vector3(transform.position.x, 0.5f, transform.position.z);
                     Instantiate(seed, RoundVector(pos, true), Quaternion.identity);
                     _audioManager.PlayCraftSFX();
+                    _anim.SetTrigger("Build");
                 }else
                 {
                     Debug.Log("Resources/Bush_Little introuvable");
@@ -223,6 +231,7 @@ public class PlayerController : MonoBehaviour
 
                 go.health = go.max_health;
                 Debug.Log("Réparé !");
+                _anim.SetTrigger("Build");
             }
         }else
         {
@@ -258,6 +267,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     _audioManager.Play("player_pickup");
+                    _anim.SetTrigger("Recup");
                 }
                 else
                 {
@@ -274,6 +284,7 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food" || col.gameObject.tag == "Resource")
         {
             _currentGo = col.gameObject;
+            _currentGo.transform.DOScaleY(0.2f, 0.5f).SetEase(Ease.InBounce);
         }
     }
 
@@ -282,6 +293,7 @@ public class PlayerController : MonoBehaviour
 
         if(_currentGo == col.gameObject)
         {
+            _currentGo.transform.DOScaleY(1, 0.5f).SetEase(Ease.InBounce);
             _currentGo = null;
         }
     }

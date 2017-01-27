@@ -16,9 +16,10 @@ public class DragDropInventory : MonoBehaviour, IDragHandler, IBeginDragHandler
 
     virtual public void OnDrag(PointerEventData eventData)
     {
+        /*
         Vector2 newPos = new Vector3(eventData.position.x + offset.x, GetComponent<RectTransform>().position.y, 0);
         if (newPos.x < maxX && newPos.x > minX)
-            GetComponent<RectTransform>().position = newPos;
+            GetComponent<RectTransform>().position = newPos;*/
 
     }
 
@@ -31,7 +32,7 @@ public class DragDropInventory : MonoBehaviour, IDragHandler, IBeginDragHandler
         offset = (pos - eventData.position);
     }
 
-    /*
+    
     virtual protected void Update()
     {
         Vector3 newPos = new Vector3(velocity, 0, 0) * Time.deltaTime;
@@ -45,5 +46,4 @@ public class DragDropInventory : MonoBehaviour, IDragHandler, IBeginDragHandler
         }
 
     }
-    */
 }
