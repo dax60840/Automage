@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9c4f683a983f84d49ae627da83ce9c59
-timeCreated: 1485435517
+timeCreated: 1485507016
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -57,8 +57,8 @@ TextureImporter:
     21300100: mockup_elements_separesv2_54
     21300102: mockup_elements_separesv2_55
     21300104: mockup_elements_separesv2_56
-    21300106: mockup_elements_separesv2_57
-    21300108: mockup_elements_separesv2_58
+    21300106: Picker
+    21300108: Cursor
     21300110: Dropdown
   serializedVersion: 4
   mipmaps:
@@ -815,7 +815,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mockup_elements_separesv2_57
+      name: Picker
       rect:
         serializedVersion: 2
         x: 535
@@ -828,7 +828,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mockup_elements_separesv2_58
+      name: Cursor
       rect:
         serializedVersion: 2
         x: 590

@@ -30,10 +30,14 @@ public class Resize : MonoBehaviour
 		float height = GetComponent<CodeComponent> ().bigSize.y;
 
 		float totalHeight = height;
+
+
 		for (int i = 0; i <= target.transform.childCount - 1; i++) {
-			if (target.transform.GetChild (i).GetComponent<RectTransform> ().sizeDelta.x > 0)
-				totalHeight += target.transform.GetChild (i).GetComponent<RectTransform> ().sizeDelta.y;
+			totalHeight += target.transform.GetChild (i).GetComponent<RectTransform> ().sizeDelta.y;
 		}
+//		if (target.transform.localScale.x == 0) {
+//			totalHeight = 110;
+//		}
 		return totalHeight;
 	}
 
@@ -41,16 +45,18 @@ public class Resize : MonoBehaviour
 	{
 		VerticalLayoutGroup parent = GetComponentInParent<VerticalLayoutGroup> ();
 
-		if (parent == null)
-			return;
+
 		
 		float totalHeight = CalculateHeight ();
+
 		lastHeight = totalHeight;
-		Debug.Log (totalHeight);
 		GetComponent<RectTransform> ().DOKill (true);
+
 		GetComponent<RectTransform> ().DOSizeDelta (new Vector2 (GetComponent<RectTransform> ().sizeDelta.x, totalHeight), .3f).SetEase (Ease.InOutBounce).OnUpdate (() => {
-			parent.enabled = false;
-			parent.enabled = true;
+			if (parent != null) {
+				parent.enabled = false;
+				parent.enabled = true;
+			}
 		});
 
 
