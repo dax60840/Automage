@@ -60,6 +60,30 @@ public class CodeSerializer : MonoBehaviour
 
 	public void Execute ()
 	{
+		if ((lastCountChild != CountChild (transform)) || (Picker.Singleton.isPicking == false && Picker.Singleton.lastIsPicking == true) || cooldown > 60) {
+			if (!everyTick) {
+				lastCountChild = CountChild (transform);
+				Interpret ();
+			}
+		}
+
+		if (everyTick)
+			Interpret ();
+
+		engine.Execute (code);
+
+
+		if (GC.GetTotalMemory (false) > 28606464)
+			GC.Collect ();
+		//	if (everyTick)
+			
+	}
+
+	int cooldown;
+
+	void Interpret ()
+	{
+		cooldown = 0;
 		CodeComponent[] components = GetComponentsInChildren<CodeComponent> ();
 
 		string line = "";
@@ -97,7 +121,7 @@ public class CodeSerializer : MonoBehaviour
 					}
 				}
 
-		
+
 
 				// register if has an end
 				if (line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length > 1) {
@@ -108,7 +132,7 @@ public class CodeSerializer : MonoBehaviour
 
 		// flush last parent
 		if (registeredParents.Count > 0) {
-//			foreach (CodeComponent comp in registeredParents) {
+			//			foreach (CodeComponent comp in registeredParents) {
 			for (int j = registeredParents.Count - 1; j >= 0; j--) {
 				CodeComponent comp = registeredParents [j];
 				string lineFlushed = GetLine (comp);
@@ -116,11 +140,12 @@ public class CodeSerializer : MonoBehaviour
 			}
 			registeredParents.Clear ();
 		}
-		engine.Execute (code);
-		GC.Collect ();
 	}
 
-
+	void FastInterpret ()
+	{
+		// TODO
+	}
 	/*public void Load ()
 	{
 		
@@ -143,6 +168,7 @@ public class CodeSerializer : MonoBehaviour
 
 	void Update ()
 	{
+		cooldown++;
 		tick++;
 		if (everyTick) {
 			if (lastCountChild != CountChild (transform) || (Picker.Singleton.isPicking == false && Picker.Singleton.lastIsPicking == true)) {
