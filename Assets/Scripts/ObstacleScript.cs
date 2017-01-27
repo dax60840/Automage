@@ -11,7 +11,7 @@ public class ObstacleScript : BuildableObject {
     void Start()
     {
         _timehurt = 0.2f;
-        _rend = GetComponent<Renderer>();
+        //_rend = GetComponent<Renderer>();
     }
 
 	void Update () {
@@ -22,14 +22,14 @@ public class ObstacleScript : BuildableObject {
 
         if(_timeStampHurt < Time.time)
         {
-            _rend.material.color = Color.white;
+            //_rend.material.color = Color.white;
         }
         
 	}
 
     public int Damage(int value)
     {
-        _rend.material.color = Color.red;
+        //_rend.material.color = Color.red;
         _timeStampHurt = Time.time + _timehurt;
         health -= value;
         return health;

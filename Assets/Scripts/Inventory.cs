@@ -66,11 +66,39 @@ public class Inventory {
 
     void UpdateUI()
     {
-        /*
-        food.text = "" + inventory["food"].ToString("000");
-        //seed.text = "" + inventory["seed0"].ToString("000");
-        wood.text = "" + inventory["wood"].ToString("000");
-        stone.text = "" + inventory["stone"].ToString("000");
-        iron.text = "" + inventory["iron"].ToString("000");*/
+        if(inventory.ContainsKey("food"))
+            food.text = "" + inventory["food"].ToString("000");
+        else
+        {
+            food.text = "000";
+        }
+
+        if (inventory.ContainsKey("seed"))
+            seed.text = "" + inventory["seed"].ToString("000");
+        else
+        {
+            seed.text = "000";
+        }
+
+        if (inventory.ContainsKey("wood"))
+            wood.text = "" + inventory["wood"].ToString("000");
+        else
+        {
+            wood.text = "000";
+        }
+
+        if (inventory.ContainsKey("stone"))
+            stone.text = "" + inventory["stone"].ToString("000");
+        else
+        {
+            stone.text = "000";
+        }
+
+        if (inventory.ContainsKey("iron"))
+            iron.text = "" + inventory["iron"].ToString("000");
+        else
+        {
+            iron.text = "000";
+        }
     }
 }
