@@ -5,16 +5,30 @@ using UnityEngine;
 public class ResourceContainer : MonoBehaviour
 {
     public List<Resource> resourcesRef;
+    public float coolDown;
     
     private List<Resource> resources =new List<Resource>();
+    private bool empty;
+    private float timeStamp = 0;
 
     void Start()
     {
+        empty = false;
         foreach(Resource r in resourcesRef)
         {
             resources.Add(new Resource(r));
         }
     }
+
+
+    void Update()
+    {
+        if(empty && timeStamp <= Time.time)
+        {
+            Start();
+        }
+    }
+
 
     public List<Resource> ExtractResource()
     {
@@ -31,6 +45,12 @@ public class ResourceContainer : MonoBehaviour
                     extracted.Add(unit);
                     r.quantity--;
                 }
+            }
+
+            if(extracted.Count == 0 && !empty)
+            {
+                empty = true;
+                timeStamp = Time.time + coolDown;
             }
 
             return extracted;

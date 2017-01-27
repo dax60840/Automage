@@ -9,10 +9,10 @@ public class BushGrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        transform.DOScaleY(1, growTime).OnComplete(
+        transform.DOScaleY(1.5f, growTime).OnComplete(
             () =>
             {
-                GameObject bush = (GameObject)Resources.Load("SM_Buisson");
+                GameObject bush = (GameObject)Resources.Load("Bush_Adult");
                 if (bush != null)
                     Instantiate(bush, RoundVector(transform.position, true), Quaternion.identity);
 
