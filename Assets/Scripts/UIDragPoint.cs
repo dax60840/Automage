@@ -55,7 +55,9 @@ public class UIDragPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 		if (data.pointerDrag != null) {
 			data.pointerDrag.transform.SetParent (transform.parent.parent);
 			data.pointerDrag.transform.SetAsLastSibling ();
-			data.pointerDrag.GetComponent<CodeComponent> ().Attach ();
+
+			if (data.pointerDrag.GetComponent<CodeComponent> ())
+				data.pointerDrag.GetComponent<CodeComponent> ().Attach ();
 		}
 		transform.parent.SetAsLastSibling ();
 	}

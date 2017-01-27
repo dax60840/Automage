@@ -8,6 +8,9 @@ using Jurassic.Library;
 public class CodeSerializer : MonoBehaviour
 {
 	public ScriptEngine engine;
+	private string code = "";
+	public bool everyTick = false;
+	private int tick = 0;
 
 	void Awake ()
 	{
@@ -52,7 +55,7 @@ public class CodeSerializer : MonoBehaviour
 	public void Execute ()
 	{
 		CodeComponent[] components = GetComponentsInChildren<CodeComponent> ();
-		string code = "";
+
 		string line = "";
 		List<CodeComponent> registeredParents = new List<CodeComponent> ();
 		for (int i = 0; i <= components.Length - 1; i++) {
@@ -61,9 +64,8 @@ public class CodeSerializer : MonoBehaviour
 				CodeComponent[] parents = components [i].GetComponentsInParent<CodeComponent> ();
 				// flush all if new line
 				if (parents.Length == 1) {
-					foreach (CodeComponent comp in registeredParents) {
-						Debug.Log ("flush new line");
-
+					for (int j = registeredParents.Count - 1; j >= 0; j--) {
+						CodeComponent comp = registeredParents [j];
 						string lineFlushed = GetLine (comp);
 						code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
 					}
@@ -76,13 +78,9 @@ public class CodeSerializer : MonoBehaviour
 				// flush parent's closing
 				parents = components [i].GetComponentsInParent<CodeComponent> ();
 				if (registeredParents.Count > 0 && parents.Length > 1) {
-					Debug.Log (line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length);
-					Debug.Log (line);
 					if (parents [1] == registeredParents [registeredParents.Count - 1] &&
 					    components [i].transform.GetSiblingIndex () == (components [i].transform.parent.childCount - 2) &&
 					    line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length == 1) {
-
-						Debug.Log ("flushing " + parents [1].name);
 						// Flushing is not working if two indented instructions are following each other without a single instructions in
 
 						string lineFlushed = GetLine (registeredParents [registeredParents.Count - 1]);
@@ -107,14 +105,11 @@ public class CodeSerializer : MonoBehaviour
 //			foreach (CodeComponent comp in registeredParents) {
 			for (int j = registeredParents.Count - 1; j >= 0; j--) {
 				CodeComponent comp = registeredParents [j];
-				Debug.Log ("flush last parents");
 				string lineFlushed = GetLine (comp);
 				code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
 			}
 			registeredParents.Clear ();
 		}
-
-		Debug.Log (code);
 		engine.Execute (code);
 	}
 
@@ -131,6 +126,14 @@ public class CodeSerializer : MonoBehaviour
 
 	void Update ()
 	{
+		tick++;
+
+		if (everyTick) {
+			if (tick % 10 == 0)
+				Execute ();
+			else
+				engine.Execute (code);
+		}
 //		engine.Execute (codeString);
 	}
 }

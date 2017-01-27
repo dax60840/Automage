@@ -69,9 +69,10 @@ public class PlayerController : MonoBehaviour
 					if (t.tag == tag) {
 						waitForClick.text = t.title;
 						waitForClick.GetComponent<CodeValue> ().value = tag;
+						Picker.Singleton.StopPick ();
+						waitForClick = null;
 					}
 				}
-				waitForClick = null;
 			}
 		}
 	}
@@ -90,8 +91,6 @@ public class PlayerController : MonoBehaviour
 	{
 		GameObject go = FindClosestGameObjectByTag (tag);
 		if (go != null) {
-			Debug.Log (func.ToStringJS ());
-
 			cs = code;
 			callback = func;
 			_navmeshagent.SetDestination (RoundVector (go.transform.position));
@@ -100,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
 	public void ClickGameObject (Text t)
 	{
+		Picker.Singleton.Pick ();
 		waitForClick = t;
 	}
 
