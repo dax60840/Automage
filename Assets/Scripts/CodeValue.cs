@@ -19,7 +19,7 @@ public class CodeValue : MonoBehaviour
 		}
 	}
 
-	public bool getText;
+	public bool getText; 
 	// Use this for initialization
 	void Start ()
 	{

@@ -22,7 +22,37 @@ public class PlayerController : MonoBehaviour
                 _hunger = maxHunger;
         }
     }
-    
+
+    [Tweakable]
+    public int Food
+    {
+        get { return inventory.Contain("food"); }
+    }
+
+    [Tweakable]
+    public int Seed
+    {
+        get { return inventory.Contain("seed"); }
+    }
+
+    [Tweakable]
+    public int Wood
+    {
+        get { return inventory.Contain("wood"); }
+    }
+
+    [Tweakable]
+    public int Stone
+    {
+        get { return inventory.Contain("stone"); }
+    }
+
+    [Tweakable]
+    public int Iron
+    {
+        get { return inventory.Contain("iron"); }
+    }
+
     public float speed;
     public Inventory inventory;
     public List<TagValue> tagList;

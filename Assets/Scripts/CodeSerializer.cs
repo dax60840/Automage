@@ -110,6 +110,7 @@ public class CodeSerializer : MonoBehaviour
 			}
 			registeredParents.Clear ();
 		}
+
 		engine.Execute (code);
 	}
 
