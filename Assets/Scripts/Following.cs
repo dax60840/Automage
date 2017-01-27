@@ -25,7 +25,7 @@ public class Following : MonoBehaviour
 
 		if (lastDistance != distance) {
 			cam.transform.DOKill (true);
-			cam.transform.DOLocalMove (new Vector3 (0, distance * .36f, -distance * .64f), .5f).SetEase (Ease.OutExpo);
+			cam.transform.DOLocalMove (new Vector3 (0, distance * .3f, -distance * .7f), .5f).SetEase (Ease.OutExpo);
 			lastDistance = distance;
 		}
 	}

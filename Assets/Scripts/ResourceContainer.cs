@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ResourceContainer : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class ResourceContainer : MonoBehaviour
     void Start()
     {
         empty = false;
-        foreach(Resource r in resourcesRef)
+        transform.DOScaleY(1, 0.5f).SetEase(Ease.InBounce);
+        foreach (Resource r in resourcesRef)
         {
             resources.Add(new Resource(r));
         }
@@ -59,5 +61,11 @@ public class ResourceContainer : MonoBehaviour
         {
             return null;
         }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if(!empty)
+            transform.DOScaleY(1, 0.5f).SetEase(Ease.InBounce);
     }
 }

@@ -191,7 +191,10 @@ public class PlayerController : MonoBehaviour
                 inventory.Remove("iron", bo.cost_iron);
                 inventory.Remove("stone", bo.cost_stone);
 
-                var go = Instantiate(bo, RoundVector(transform.position), Quaternion.identity);
+
+                Vector3 pos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+
+                var go = Instantiate(bo, RoundVector(pos, true), Quaternion.identity);
 
                 var obstacle = go.GetComponent<NavMeshObstacle>();
 
@@ -282,7 +285,7 @@ public class PlayerController : MonoBehaviour
 
     public void Harvest()
     {
-        if (_currentGo != null && (_currentGo.tag == "Resource" || _currentGo.tag == "Food"))
+        if (_currentGo != null && (_currentGo.tag == "Wood" || _currentGo.tag == "Stone" || _currentGo.tag == "Iron" || _currentGo.tag == "Food"))
         {
             if (_currentGo.GetComponent<ResourceContainer>())
             {
@@ -310,8 +313,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-
-        if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Food" || col.gameObject.tag == "Resource")
+        Debug.Log("trigger");
+        if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Reparable" || col.gameObject.tag == "Wood" || col.gameObject.tag == "Stone" || col.gameObject.tag == "Iron" || col.gameObject.tag == "Food")
         {
             _currentGo = col.gameObject;
             _currentGo.transform.DOScaleY(0.2f, 0.5f).SetEase(Ease.InBounce);
@@ -320,10 +323,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-
         if(_currentGo == col.gameObject)
         {
-            _currentGo.transform.DOScaleY(1, 0.5f).SetEase(Ease.InBounce);
             _currentGo = null;
         }
     }
