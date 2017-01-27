@@ -39,10 +39,7 @@ public class TabManager : MonoBehaviour
 		obj.GetComponent<Tab> ().order = obj.transform.GetSiblingIndex ();
 
 
-		/*	obj.GetComponent<Tab> ().script.GetComponentInChildren<CodeSerializer> ().everyTick = true;
-		Destroy (obj.GetComponent<Tab> ().script.GetComponentInParent<ScriptUI> ().GetComponentsInChildren<InputField> () [1].gameObject);
-		obj.GetComponent<Tab> ().script.GetComponentInParent<ScriptUI> ().GetComponentsInChildren<InputField> () [0].text = "Principal";
-		obj.GetComponent<Tab> ().script.GetComponentInParent<ScriptUI> ().GetComponentsInChildren<Text> () [1].text = "S'execute en continu";*/
+		obj.GetComponent<Tab> ().isMaster = true;
 	}
 
 	// Update is called once per frame

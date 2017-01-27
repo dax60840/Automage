@@ -18,6 +18,7 @@ public class Picker : MonoBehaviour
 	public Vector2 hotSpot = Vector2.zero;
 
 	public bool isPicking = false;
+	public bool lastIsPicking;
 
 	void Awake ()
 	{
@@ -39,6 +40,8 @@ public class Picker : MonoBehaviour
 		Handler.transform.parent.GetChild (0).DOKill (true);
 		Handler.transform.parent.GetChild (0).DOBlendableLocalMoveBy (Vector3.left * 1920, .5f).SetEase (Ease.InQuad);
 		Cursor.SetCursor (cursorHover, Vector2.zero, cursorMode);
+
+		Following.Singleton.distance = 30;
 	}
 
 	public void StopPick ()
@@ -49,14 +52,16 @@ public class Picker : MonoBehaviour
 		transform.GetChild (0).GetComponent<RectTransform> ().DOKill (true);
 		transform.GetChild (0).GetComponent<RectTransform> ().DOBlendableLocalMoveBy (-Vector3.up * 400, .5f).SetEase (Ease.InExpo);
 		Handler.transform.parent.GetChild (0).DOKill (true);
-		Handler.transform.parent.GetChild (0).DOBlendableLocalMoveBy (-Vector3.left * 1920, .5f).SetEase (Ease.OutQuad);
+		Handler.transform.parent.GetChild (0).DOBlendableLocalMoveBy (-Vector3.left * 1920, .3f).SetEase (Ease.InQuad);
 		Cursor.SetCursor (cursorRegular, Vector2.zero, cursorMode);
+
+		Following.Singleton.distance = 11;
 	}
 
 	// Update is called once per frame
-	void Update ()
+	void LateUpdate ()
 	{
-
+		lastIsPicking = isPicking;
 	}
 }
 

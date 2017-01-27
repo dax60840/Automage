@@ -17,11 +17,22 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	private bool isOver = false;
 	private float timing = 0;
 
+	public bool isMaster = false;
+
 	private GameObject target;
 	// Use this for initialization
 	void Start ()
 	{
 		script = Instantiate (script, script.transform.parent) as GameObject;
+
+		if (isMaster) {
+			script.GetComponentInChildren<CodeSerializer> ().everyTick = true;
+			script.GetComponentInParent<ScriptUI> ().GetComponentsInChildren<Text> () [4].text = "S'execute en continu...";
+			Destroy (script.GetComponentInParent<ScriptUI> ().GetComponentsInChildren<InputField> () [1].gameObject);
+			script.GetComponentInParent<ScriptUI> ().GetComponentsInChildren<InputField> () [0].text = "Principal";
+			GetComponentInChildren<Text> ().text = "Principal";
+		}
+
 		name = script.GetComponentInChildren<InputField> ();
 		name.onValueChanged.AddListener ((text) => {
 			GetComponentInChildren<Text> ().text = text;
@@ -74,10 +85,11 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		if (isOver) {
 			timing += Time.deltaTime;
 
-			if (timing > .8f) {
+			if (timing > .2f) {
 				timing = 0;
 				Open ();
 				if (target.GetComponent<CodeComponent> ()) {
+					isOver = false;
 					target.transform.SetParent (script.GetComponentInChildren<NoteParent> ().transform);
 					target.transform.SetAsFirstSibling ();
 				}
