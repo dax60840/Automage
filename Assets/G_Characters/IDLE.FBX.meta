@@ -1,0 +1,295 @@
+fileFormatVersion: 2
+guid: ab3501a4c2303a24bbe1be3ec3113486
+timeCreated: 1485468797
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_R
+    100004: Cape00
+    100006: Cape01
+    100008: Cape02
+    100010: Cape03
+    100012: Cape04
+    100014: Cape05
+    100016: CapeBase
+    100018: Corps
+    100020: Finger1_00$_R
+    100022: Finger1_00_L
+    100024: Finger1_01_L
+    100026: Finger1_01_R
+    100028: Finger2_00_L
+    100030: Finger2_00_R
+    100032: Finger2_01_L
+    100034: Finger2_01_R
+    100036: Finger3_00_L
+    100038: Finger3_00_R
+    100040: Finger3_01_L
+    100042: Finger3_01_R
+    100044: FlexEar00_L
+    100046: FlexEar00_R
+    100048: FlexEar01_L
+    100050: FlexEar01_R
+    100052: Foot_L
+    100054: Foot_R
+    100056: ForeArm_L
+    100058: ForeArm_R
+    100060: ForeLeg_L
+    100062: ForeLeg_R
+    100064: Gant
+    100066: Gant_ouverture
+    100068: Globe
+    100070: Hand_L
+    100072: Hand_R
+    100074: Head
+    100076: //RootNode
+    100078: Leg_L
+    100080: Leg_R
+    100082: Pelvis
+    100084: Sceptre
+    100086: Spine1
+    100088: Spine2
+    100090: Toe_L
+    100092: Toe_R
+    400000: Arm_L
+    400002: Arm_R
+    400004: Cape00
+    400006: Cape01
+    400008: Cape02
+    400010: Cape03
+    400012: Cape04
+    400014: Cape05
+    400016: CapeBase
+    400018: Corps
+    400020: Finger1_00$_R
+    400022: Finger1_00_L
+    400024: Finger1_01_L
+    400026: Finger1_01_R
+    400028: Finger2_00_L
+    400030: Finger2_00_R
+    400032: Finger2_01_L
+    400034: Finger2_01_R
+    400036: Finger3_00_L
+    400038: Finger3_00_R
+    400040: Finger3_01_L
+    400042: Finger3_01_R
+    400044: FlexEar00_L
+    400046: FlexEar00_R
+    400048: FlexEar01_L
+    400050: FlexEar01_R
+    400052: Foot_L
+    400054: Foot_R
+    400056: ForeArm_L
+    400058: ForeArm_R
+    400060: ForeLeg_L
+    400062: ForeLeg_R
+    400064: Gant
+    400066: Gant_ouverture
+    400068: Globe
+    400070: Hand_L
+    400072: Hand_R
+    400074: Head
+    400076: //RootNode
+    400078: Leg_L
+    400080: Leg_R
+    400082: Pelvis
+    400084: Sceptre
+    400086: Spine1
+    400088: Spine2
+    400090: Toe_L
+    400092: Toe_R
+    4300000: Corps
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Corps
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Corps
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Leg_L
+        weight: 1
+      - path: Pelvis/Leg_L/ForeLeg_L
+        weight: 1
+      - path: Pelvis/Leg_L/ForeLeg_L/Foot_L
+        weight: 1
+      - path: Pelvis/Leg_L/ForeLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Pelvis/Leg_R
+        weight: 1
+      - path: Pelvis/Leg_R/ForeLeg_R
+        weight: 1
+      - path: Pelvis/Leg_R/ForeLeg_R/Foot_R
+        weight: 1
+      - path: Pelvis/Leg_R/ForeLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Pelvis/Spine1
+        weight: 1
+      - path: Pelvis/Spine1/Spine2
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L/Finger1_00_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L/Finger1_00_L/Finger1_01_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L/Finger2_00_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L/Finger2_00_L/Finger2_01_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L/Finger3_00_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_L/ForeArm_L/Hand_L/Finger3_00_L/Finger3_01_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R/Finger1_00$_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R/Finger1_00$_R/Finger1_01_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R/Finger2_00_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R/Finger2_00_R/Finger2_01_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R/Finger3_00_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Arm_R/ForeArm_R/Hand_R/Finger3_00_R/Finger3_01_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase/Cape00
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase/Cape00/Cape01
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase/Cape00/Cape01/Cape02
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase/Cape00/Cape01/Cape02/Cape03
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase/Cape00/Cape01/Cape02/Cape03/Cape04
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/CapeBase/Cape00/Cape01/Cape02/Cape03/Cape04/Cape05
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Head
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Head/FlexEar00_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Head/FlexEar00_L/FlexEar01_L
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Head/FlexEar00_R
+        weight: 1
+      - path: Pelvis/Spine1/Spine2/Head/FlexEar00_R/FlexEar01_R
+        weight: 1
+      - path: Sceptre
+        weight: 1
+      - path: Sceptre/Globe
+        weight: 1
+      - path: Sceptre/Globe/Gant
+        weight: 1
+      - path: Sceptre/Globe/Gant/Gant_ouverture
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
