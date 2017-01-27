@@ -142,9 +142,69 @@ public class CodeSerializer : MonoBehaviour
 		}
 	}
 
+	CodeComponent[] AAcomponents;
+
+
+	// --------------->
 	void FastInterpret ()
 	{
-		// TODO
+		cooldown = 0;
+		AAcomponents = GetComponentsInChildren<CodeComponent> ();
+
+		string line = "";
+		List<CodeComponent> registeredParents = new List<CodeComponent> ();
+		for (int i = 0; i <= AAcomponents.Length - 1; i++) {
+			if (AAcomponents [i].script != null) {
+
+				CodeComponent[] parents = AAcomponents [i].GetComponentsInParent<CodeComponent> ();
+				// flush all if new line
+				if (parents.Length == 1) {
+					for (int j = registeredParents.Count - 1; j >= 0; j--) {
+						CodeComponent comp = registeredParents [j];
+						string lineFlushed = GetLine (comp);
+						code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
+					}
+					registeredParents.Clear ();
+				}
+
+				line = GetLine (AAcomponents [i]);
+				code += line.Split (new string[]{ "%end%" }, StringSplitOptions.None) [0];
+
+				// flush parent's closing
+				parents = AAcomponents [i].GetComponentsInParent<CodeComponent> ();
+				if (registeredParents.Count > 0 && parents.Length > 1) {
+					if (parents [1] == registeredParents [registeredParents.Count - 1] &&
+					    AAcomponents [i].transform.GetSiblingIndex () == (AAcomponents [i].transform.parent.childCount - 2) &&
+					    line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length == 1) {
+						// Flushing is not working if two indented instructions are following each other without a single instructions in
+
+						string lineFlushed = GetLine (registeredParents [registeredParents.Count - 1]);
+						code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
+						registeredParents.RemoveAt (registeredParents.Count - 1);
+
+
+					}
+				}
+
+
+
+				// register if has an end
+				if (line.Split (new string[]{ "%end%" }, StringSplitOptions.None).Length > 1) {
+					registeredParents.Add (AAcomponents [i]);
+				}
+			}
+		}
+
+		// flush last parent
+		if (registeredParents.Count > 0) {
+			//			foreach (CodeComponent comp in registeredParents) {
+			for (int j = registeredParents.Count - 1; j >= 0; j--) {
+				CodeComponent comp = registeredParents [j];
+				string lineFlushed = GetLine (comp);
+				code += lineFlushed.Split (new string[]{ "%end%" }, StringSplitOptions.None) [1];
+			}
+			registeredParents.Clear ();
+		}
 	}
 	/*public void Load ()
 	{
