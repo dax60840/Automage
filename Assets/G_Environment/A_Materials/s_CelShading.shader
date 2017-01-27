@@ -86,8 +86,7 @@ Shader "Unlit/s_CelShading" {
 ////// Lighting:
                 float attenuation = LIGHT_ATTENUATION(i);
 ////// Emissive:
-                float2 node_4979 = (float2(i.posWorld.r,i.posWorld.b)/_RandomScale);
-                float2 node_6339 = floor(node_4979);
+                float2 node_6339 = floor((float2(i.posWorld.r,i.posWorld.b)/_RandomScale));
                 float2 node_2302_skew = node_6339 + 0.2127+node_6339.x*0.3713*node_6339.y;
                 float2 node_2302_rnd = 4.789*sin(489.123*(node_2302_skew));
                 float node_2302 = frac(node_2302_rnd.x*node_2302_rnd.y*(1+node_2302_skew.x));
